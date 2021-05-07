@@ -104,11 +104,43 @@ const getAllBooksHandler = (request, h) => {
                 }
             });
         });
-        data = arraySearch;
+
+        const result = []
+        arraySearch.map((n) => {
+            result.push({
+                id: n.id,
+                name: n.name,
+                publisher: n.publisher
+            });
+        });
+
+        data = result;
     } else if (typeof reading !== 'undefined') {
-        data = books.filter((book) => book.reading == (reading == 1));
+        const result = []
+        const arraySearch = books.filter((book) => book.reading == (reading == 1));
+
+        arraySearch.map((n) => {
+            result.push({
+                id: n.id,
+                name: n.name,
+                publisher: n.publisher
+            });
+        });
+
+        data = result;
     } else if (typeof finished !== 'undefined') {
-        data = books.filter((book) => book.finished == (finished == 1));
+        const result = []
+        const arraySearch = books.filter((book) => book.finished == (finished == 1));
+
+        arraySearch.map((n) => {
+            result.push({
+                id: n.id,
+                name: n.name,
+                publisher: n.publisher
+            });
+        });
+
+        data = result;
     } else {
         data = [];
         books.map((n) => {
